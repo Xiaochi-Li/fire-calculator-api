@@ -6,6 +6,7 @@ import { FinancialProfile } from "./entity/financialProfile/financialProfile.ent
 // create and setup express app
 const app = express();
 app.use(express.json());
+const port = 8241;
 
 // establish database connection
 myDataSource
@@ -17,6 +18,12 @@ myDataSource
     console.error("Error during Data Source initialization:", err);
   });
 
+app.get(
+  "/financial-profile/health-check",
+  async function (req: Request, res: Response) {
+    res.send("Financial Profile Service is up and running! congratulations!");
+  }
+);
 // register routes
 // Find a way to organize routes in a better way, routes of same entity should be grouped together
 app.get("financial-profile/:id", function (req: Request, res: Response) {
@@ -43,4 +50,4 @@ app.delete("financial-profile/:id", function (req: Request, res: Response) {
 });
 
 // start express server
-app.listen(3000);
+app.listen(port);
