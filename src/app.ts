@@ -41,6 +41,17 @@ app.post("/financial-profile", async function (req: Request, res: Response) {
   return res.send(results);
 });
 
+app.get(
+  "/financial-profile/get-all",
+  async function (req: Request, res: Response) {
+    // here we will have logic to return all financial profiles
+    const financialProfiles = await myDataSource
+      .getRepository(FinancialProfile)
+      .find();
+    return res.send(financialProfiles);
+  }
+);
+
 app.put("financial-profile/:id", function (req: Request, res: Response) {
   // here we will have logic to update a financial profile by a given financial profile id
 });
