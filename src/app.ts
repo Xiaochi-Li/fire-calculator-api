@@ -21,7 +21,7 @@ myDataSource
 app.get(
   "/financial-profile/health-check",
   async function (req: Request, res: Response) {
-    res.send("Financial Profile Service is up and running! congratulations!");
+    res.send("Financial Profile Service is up and running!");
   }
 );
 // register routes
